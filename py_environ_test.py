@@ -13,7 +13,7 @@ def test_to_environ_key():
 @mock.patch.dict(os.environ, {'SECTION1_VAR_ONE': 'foo',
                               'SECTION2_VAR_TWO': 'bar'})
 def test_wrapper_get():
-    config = EnvironmentConfigWrapper(SafeConfigParser())
+    config = EnvironmentConfigWrapper()
     config.add_section('Section1')
     config.add_section('Section2')
 
@@ -32,7 +32,7 @@ def test_wrapper_get():
                               'SECTION3_FLOAT_VAR2': '0.4',
                               'SECTION3_SHOULD_FOO': 'False'})
 def test_wrapper_get_type_coercion():
-    config = EnvironmentConfigWrapper(SafeConfigParser())
+    config = EnvironmentConfigWrapper()
     config.add_section('Section1')
     config.add_section('Section2')
     config.add_section('Section3')
