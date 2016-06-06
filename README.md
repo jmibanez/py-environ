@@ -1,9 +1,9 @@
 py-environ: ConfigParser with environmental override
 ====================================================
 
-This is a ConfigParser wrapper that uses an underlying ConfigParser to
-load and parse configuration with the ability to override option
-values from the environment.
+This is a ConfigParser implementation that forwards to
+SafeConfigParser to load and parse configuration, while allowing
+option values to be overriden from the environment.
 
 
 Usage
@@ -11,8 +11,8 @@ Usage
 ```
     from py_environ import EnvironmentConfigWrapper
 
-    # Create a wrapper around a config parser
-    config = EnvironmentConfigWrapper(SafeConfigParser())
+    # Create a config parser
+    config = EnvironmentConfigWrapper()
     
     # Use as is
     option_one_str = config.get('My Section', 'option_one')
