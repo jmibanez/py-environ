@@ -28,7 +28,7 @@ class EnvironmentConfigWrapper(SafeConfigParser, object):
         else:
             return super(EnvironmentConfigWrapper, self).has_option(section, option)
 
-    def get(self, section, option):
+    def get(self, section, option, **kwargs):
         env_prefix = to_environ_key(section)
         env_option = to_environ_key(option)
         env_name = "%s_%s" % (env_prefix, env_option)
@@ -36,5 +36,5 @@ class EnvironmentConfigWrapper(SafeConfigParser, object):
         if env_name in os.environ:
             return os.environ[env_name]
         else:
-            return super(EnvironmentConfigWrapper, self).get(section, option)
+            return super(EnvironmentConfigWrapper, self).get(section, option, **kwargs)
         
